@@ -19,11 +19,12 @@ const scene = new THREE.Scene()
 // Object
 const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1, 5, 5, 5),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    new THREE.MeshBasicMaterial({ color: 0xe0e0e0 })
 )
 scene.add(mesh)
 
 // Camera
+// Perpective camara field of view: between 45 and 75
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
 camera.position.x = 2
 camera.position.y = 2
