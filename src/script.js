@@ -60,6 +60,7 @@ scene.add(camera)
 const controls = new OrbitControls(camera, canvas)
 // controls.target.y = 1
 // controls.update()
+controls.enableDamping = true
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -85,7 +86,8 @@ const tick = () =>
     // camera.position.y = cursor.y * 5
     // camera.lookAt(mesh.position)
 
-
+    // Update Controls
+    controls.update()
 
     // Render
     renderer.render(scene, camera)
