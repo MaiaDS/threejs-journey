@@ -1,6 +1,19 @@
 import './style.css'
 import * as THREE from 'three'
 
+// Cursor
+const cursor = {
+    x: 0,
+    y: 0
+}
+window.addEventListener('mousemove', (event) => {
+    // console.log(event.clientX)
+    // console.log(event.clientY)
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = - (event.clientY / sizes.height - 0.5)
+    // console.log(cursor)
+})
+
 /**
  * Base
  */
@@ -25,19 +38,19 @@ scene.add(mesh)
 
 // Camera
 // Perpective camara field of view: between 45 and 75
-// const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-const aspectRation = sizes.width / sizes.height
-const camera = new THREE.OrthographicCamera(
-    -1 * aspectRation, // left
-    1 * aspectRation, // top
-    1, // right
-    -1, // bottom
-    0.1, // near
-    100 // far
-)
-camera.position.x = 2
-camera.position.y = 2
-camera.position.z = 2
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+// const aspectRation = sizes.width / sizes.height
+// const camera = new THREE.OrthographicCamera(
+//     -1 * aspectRation, // left
+//     1 * aspectRation, // top
+//     1, // right
+//     -1, // bottom
+//     0.1, // near
+//     100 // far
+// )
+// camera.position.x = 2
+// camera.position.y = 2
+camera.position.z = 3
 // console.log(camera.position.length()) // 3.4641016151377544
 camera.lookAt(mesh.position)
 scene.add(camera)
@@ -56,8 +69,12 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    mesh.rotation.y = elapsedTime;
+    // mesh.rotation.y = elapsedTime;
 
+    // Upadte Camera
+    camera.position.x = cursor.x * 10
+    camera.position.y = cursor.y * 10
+    
     // Render
     renderer.render(scene, camera)
 
