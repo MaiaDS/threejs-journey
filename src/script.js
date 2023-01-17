@@ -25,11 +25,11 @@ scene.add(mesh)
 
 // Camera
 // Perpective camara field of view: between 45 and 75
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 1, 3)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 2
 camera.position.y = 2
 camera.position.z = 2
-console.log(camera.position.length())
+// console.log(camera.position.length()) // 3.4641016151377544
 camera.lookAt(mesh.position)
 scene.add(camera)
 
