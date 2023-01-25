@@ -37,6 +37,9 @@ window.addEventListener('resize', () => {
 
     // Upadte renderer
     renderer.setSize(sizes.width, sizes.height)
+
+    // Update devices pixel ratio (set up with more than one screen)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 /**
@@ -59,6 +62,8 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+// Handle devices pixel ratio to have a better render
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 /**
  * Animate
