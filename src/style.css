@@ -1,0 +1,18 @@
+/* First solution */
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+/* If trackpad causes a white space */
+/* html, body {
+    overflow: hidden;
+} */
+
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* If outline when drag and drop  */
+    outline: none;
+}
