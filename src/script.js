@@ -26,6 +26,7 @@ const sizes = {
     height: window.innerHeight
 }
 
+// Handle resizing
 window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth
@@ -40,6 +41,32 @@ window.addEventListener('resize', () => {
 
     // Update devices pixel ratio (set up with more than one screen)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+// Handle fullscreen experience
+window.addEventListener('dblclick', () => {
+    // work on safari
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
+    if(!fullscreenElement) {
+        if(canvas.requestFullscreen){
+            canvas.requestFullscreen()
+        } else if(canvas.webkitRequestFullscreen) {
+            canvas.webkitRequestFullscreen()
+        }
+    } else {
+        if(document.exitFullscreen){
+            document.exitFullscreen()
+        } else if(canvas.webkitRequestFullscreen) {
+            document.webkitExitFullscreen()
+        }
+    }
+
+    // doesn't work on safari
+    // if(!document.fullscreenElement) {
+    //     canvas.requestFullscreen()
+    // } else {
+    //     document.exitFullscreen()
+    // }
 })
 
 /**
