@@ -32,7 +32,7 @@ scene.add(mesh)
 // gui.addColor(material, 'color')
 gui.add(mesh, 'visible')
 // create folders
-const positionsFolder = gui.addFolder( 'Position' );
+const positionsFolder = gui.addFolder( 'Positions' );
 positionsFolder.add(mesh.position, 'y').min(-1).max(1).step(0.01)
 positionsFolder.add(mesh.position, 'x').min(-1).max(1).step(0.01)
 positionsFolder.add(mesh.position, 'z').min(-1).max(1).step(0.01)
