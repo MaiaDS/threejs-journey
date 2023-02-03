@@ -40,6 +40,14 @@ const materialFolder = gui.addFolder('Material')
 materialFolder.add(material, 'wireframe')
 materialFolder.addColor(material, 'color')
 
+// Add function in debug panel
+const parameters = {
+    spin: () => {
+        gsap.to(mesh.rotation, {duration:1,y:mesh.rotation.y + 10})
+    }
+}
+positionsFolder.add(parameters,'spin')
+
 /**
  * Sizes
  */
