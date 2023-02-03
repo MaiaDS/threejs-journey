@@ -25,12 +25,20 @@ const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
 // Add Tweaks to debug panel
-gui.add(mesh.position, 'y').min(-1).max(1).step(0.01)
-gui.add(mesh.position, 'x').min(-1).max(1).step(0.01)
-gui.add(mesh.position, 'z').min(-1).max(1).step(0.01)
-gui.add(material, 'wireframe')
-gui.addColor(material, 'color')
+// gui.add(mesh.position, 'y').min(-1).max(1).step(0.01)
+// gui.add(mesh.position, 'x').min(-1).max(1).step(0.01)
+// gui.add(mesh.position, 'z').min(-1).max(1).step(0.01)
+// gui.add(material, 'wireframe')
+// gui.addColor(material, 'color')
 gui.add(mesh, 'visible')
+// create folders
+const positionsFolder = gui.addFolder( 'Position' );
+positionsFolder.add(mesh.position, 'y').min(-1).max(1).step(0.01)
+positionsFolder.add(mesh.position, 'x').min(-1).max(1).step(0.01)
+positionsFolder.add(mesh.position, 'z').min(-1).max(1).step(0.01)
+const materialFolder = gui.addFolder('Material')
+materialFolder.add(material, 'wireframe')
+materialFolder.addColor(material, 'color')
 
 /**
  * Sizes
