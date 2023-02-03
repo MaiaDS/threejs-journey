@@ -1,7 +1,11 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
-import * as gui from 'lil-gui'
+import * as lilGUI from 'lil-gui'
+
+// Debug 
+// console.log(gui)
+const gui = new lilGUI.GUI()
 
 /**
  * Base
@@ -19,6 +23,14 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xe0e0e0 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+// Add Tweaks to debug panel
+gui.add(mesh.position, 'y').min(-1).max(1).step(0.01)
+gui.add(mesh.position, 'x').min(-1).max(1).step(0.01)
+gui.add(mesh.position, 'z').min(-1).max(1).step(0.01)
+gui.add(material, 'wireframe')
+gui.addColor(material, 'color')
+gui.add(mesh, 'visible')
 
 /**
  * Sizes
