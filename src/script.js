@@ -24,14 +24,14 @@ const material = new THREE.MeshBasicMaterial({ color: 0xe0e0e0 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
-// Add Tweaks to debug panel
+// Add tweaks to debug panel
 // gui.add(mesh.position, 'y').min(-1).max(1).step(0.01)
 // gui.add(mesh.position, 'x').min(-1).max(1).step(0.01)
 // gui.add(mesh.position, 'z').min(-1).max(1).step(0.01)
 // gui.add(material, 'wireframe')
 // gui.addColor(material, 'color')
 gui.add(mesh, 'visible')
-// create folders
+// create folders and add tweaks inside
 const positionsFolder = gui.addFolder( 'Positions' );
 positionsFolder.add(mesh.position, 'y').min(-1).max(1).step(0.01)
 positionsFolder.add(mesh.position, 'x').min(-1).max(1).step(0.01)
