@@ -8,9 +8,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 // Textures
 const image = new Image()
-image.onload = () => {
-    const texture = new THREE.Texture(image)
-}
+const texture = new THREE.Texture(image)
+image.addEventListener('load', () => {
+    texture.needsUpdate = true
+})
 image.src = '/textures/door/color.jpg'
 
 // Canvas
