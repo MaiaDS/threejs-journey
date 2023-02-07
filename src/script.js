@@ -17,6 +17,18 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // Use TextureLoader to load textures
 const textureLoader = new THREE.TextureLoader()
 const texture = textureLoader.load('/textures/door/color.jpg')
+// const texture = textureLoader.load(
+//     '/textures/door/color.jpg',
+//     () => {
+//         // loading finished
+//     },
+//     () => {
+//         // loading in progress
+//     },
+//     () => {
+//         // error
+//     }
+// )
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
