@@ -43,8 +43,11 @@ const scene = new THREE.Scene()
 // material.flatShading = true
 
 // Matcap Materials
-const material = new THREE.MeshMatcapMaterial()
-material.matcap = matcapTexture
+// const material = new THREE.MeshMatcapMaterial()
+// material.matcap = matcapTexture
+
+// Depth Material
+const material = new THREE.MeshDepthMaterial()
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
