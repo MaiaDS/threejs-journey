@@ -28,11 +28,12 @@ const scene = new THREE.Scene()
 //     map: gradientTexture
 // })
 const material = new MeshBasicMaterial()
-material.map = gradientTexture
+material.map = doorColorTexture
 material.color = new THREE.Color('#e0e0e0') // OR material.color.set(255,154,245)
 // material.wireframe = true
 // material.opacity = 0.5
-// material.transparent = true
+material.transparent = true
+material.alphaMap = doorAlphaTexture
 
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
 sphere.position.x = -1.5
