@@ -61,8 +61,13 @@ const scene = new THREE.Scene()
 // material.specular = new THREE.Color('blue')
 
 // Toon Material
-const material = new THREE.MeshToonMaterial()
-material.gradientMap = gradientTexture
+// const material = new THREE.MeshToonMaterial()
+// material.gradientMap = gradientTexture
+
+// Standard Material
+const material = new THREE.MeshStandardMaterial()
+material.metalness = 0.5
+material.roughness = 0.5
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
