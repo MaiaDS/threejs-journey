@@ -39,6 +39,8 @@ const scene = new THREE.Scene()
 
 // Normal Material
 const material = new THREE.MeshNormalMaterial()
+// material.wireframe = true
+material.flatShading = true
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
