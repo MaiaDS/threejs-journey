@@ -23,18 +23,24 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-// Objects
+// Basic Material
 // const material = new THREE.MeshBasicMaterial({
 //     map: gradientTexture
 // })
-const material = new MeshBasicMaterial()
-material.map = doorColorTexture
-material.color = new THREE.Color('#e0e0e0') // OR material.color.set(255,154,245)
-// material.wireframe = true
-// material.opacity = 0.5
-material.transparent = true
-material.alphaMap = doorAlphaTexture
+// const material = new MeshBasicMaterial()
+// material.map = doorColorTexture
+// material.color = new THREE.Color('#e0e0e0') // OR material.color.set(255,154,245)
+// // material.wireframe = true
+// // material.opacity = 0.5
+// material.transparent = true
+// material.alphaMap = doorAlphaTexture
+// // Avoid using Double side in projects because it's heavier (more calculations)
+// material.side = THREE.DoubleSide // Default = FrontSide
 
+// Normal Material
+const material = new THREE.MeshNormalMaterial()
+
+// Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
 sphere.position.x = -1.5
 const plane = new THREE.Mesh(new THREE.PlaneGeometry(1,1), material)
