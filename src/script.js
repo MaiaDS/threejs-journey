@@ -15,7 +15,7 @@ const doorRoughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 // Gradient Textures
 const gradientTexture = textureLoader.load('/textures/gradients/3.jpg')
 // Matcaps Textures
-const matcapTexture = textureLoader.load('/textures/matcaps/1.png')
+const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
