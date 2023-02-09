@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { PlaneGeometry, SphereGeometry } from 'three'
+import { MeshBasicMaterial, PlaneGeometry, SphereGeometry } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 // Textures 
@@ -24,7 +24,12 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-const material = new THREE.MeshBasicMaterial({color: 0xe0e0e0})
+// const material = new THREE.MeshBasicMaterial({
+//     map: gradientTexture
+// })
+const material = new MeshBasicMaterial()
+material.map = gradientTexture
+
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
 sphere.position.x = -1.5
 const plane = new THREE.Mesh(new THREE.PlaneGeometry(1,1), material)
