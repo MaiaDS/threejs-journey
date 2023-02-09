@@ -30,9 +30,9 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Basic Material
-// const material = new THREE.MeshBasicMaterial({
-//     map: gradientTexture
-// })
+// // const material = new THREE.MeshBasicMaterial({
+// //     map: gradientTexture
+// // })
 // const material = new MeshBasicMaterial()
 // material.map = doorColorTexture
 // material.color = new THREE.Color('#e0e0e0') // OR material.color.set(255,154,245)
@@ -69,22 +69,34 @@ const scene = new THREE.Scene()
 
 // Standard Material
 const material = new THREE.MeshStandardMaterial()
-material.metalness = 0.5
-material.roughness = 0.5
+material.map = doorColorTexture
+material.aoMap = doorAmbientOcclusionTexture
+material.displacementMap = doorHeightTexture
+material.metalnessMap = doorMetalnessTexture
+material.roughnessMap = doorRoughnessTexture
+material.displacementScale = 0.05
+material.normalMap = doorNormalTexture
+
 gui.add(material, 'metalness').min(0).max(1).step(0.0001)
 gui.add(material, 'roughness').min(0).max(1).step(0.0001)
+gui.add(material, 'aoMapIntensity').min(0).max(10).step(0.0001)
+gui.add(material, 'displacementScale').min(0).max(1).step(0.0001)
 
 // Objects
-const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,64,64), material)
 sphere.position.x = -1.5
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(1,1), material)
-const torus = new THREE.Mesh(new THREE.TorusGeometry(0.5,0.2,16,32), material)
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(1,1,100, 100), material)
+const torus = new THREE.Mesh(new THREE.TorusGeometry(0.5,0.2,64,128), material)
 torus.position.x = 1.5
 scene.add(sphere, plane, torus)
 
+sphere.geometry.setAttribute('uv2', new THREE.BufferAttribute(sphere.geometry.attributes.uv.array, 2))
+plane.geometry.setAttribute('uv2', new THREE.BufferAttribute(plane.geometry.attributes.uv.array, 2))
+torus.geometry.setAttribute('uv2', new THREE.BufferAttribute(torus.geometry.attributes.uv.array, 2))
+
 // Adding lights 
-const ambientLight = new THREE.AmbientLight(0xfff, 0.5)
-const pointLight = new THREE.PointLight(0xfff, 0.5)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+const pointLight = new THREE.PointLight(0xffffff, 0.5)
 pointLight.position.x = 2
 pointLight.position.y = 3
 pointLight.position.z = 4
