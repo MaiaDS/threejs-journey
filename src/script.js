@@ -49,8 +49,11 @@ const scene = new THREE.Scene()
 // Depth Material
 // const material = new THREE.MeshDepthMaterial()
 
-// Material
-const material = new THREE.MeshLambertMaterial()
+// Lambert Material
+// const material = new THREE.MeshLambertMaterial()
+
+// Phong Material
+const material = new THREE.MeshPhongMaterial()
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
