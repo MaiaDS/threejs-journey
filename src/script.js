@@ -1,6 +1,9 @@
 import * as THREE from 'three'
-import { MeshBasicMaterial, PlaneGeometry, SphereGeometry } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import * as lilGUI from 'lil-gui'
+
+// GUI
+const gui = new lilGUI.GUI()
 
 // Textures 
 const textureLoader = new THREE.TextureLoader()
@@ -68,6 +71,8 @@ const scene = new THREE.Scene()
 const material = new THREE.MeshStandardMaterial()
 material.metalness = 0.5
 material.roughness = 0.5
+gui.add(material, 'metalness').min(0).max(1).step(0.0001)
+gui.add(material, 'roughness').min(0).max(1).step(0.0001)
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,16,16), material)
