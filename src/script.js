@@ -22,6 +22,16 @@ gradientTexture.magFilter = THREE.NearestFilter
 gradientTexture.generateMipmaps = false
 // Matcaps Textures
 const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
+// Cube texture loader
+const cubeTextureLoader = new THREE.CubeTextureLoader()
+const envMapTexture = cubeTextureLoader.load([
+    '/textures/environmentMaps/0/px.jpg',
+    '/textures/environmentMaps/0/nx.jpg',
+    '/textures/environmentMaps/0/py.jpg',
+    '/textures/environmentMaps/0/ny.jpg',
+    '/textures/environmentMaps/0/pz.jpg',
+    '/textures/environmentMaps/0/nz.jpg',
+]) // Warning : paths order is important
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -68,21 +78,29 @@ const scene = new THREE.Scene()
 // material.gradientMap = gradientTexture
 
 // Standard Material
-const material = new THREE.MeshStandardMaterial()
-material.map = doorColorTexture
-material.aoMap = doorAmbientOcclusionTexture
-material.displacementMap = doorHeightTexture
-material.metalnessMap = doorMetalnessTexture
-material.roughnessMap = doorRoughnessTexture
-material.displacementScale = 0.05
-material.normalMap = doorNormalTexture
-material.transparent = true
-material.alphaMap = doorAlphaTexture
+// const material = new THREE.MeshStandardMaterial()
+// material.map = doorColorTexture
+// material.aoMap = doorAmbientOcclusionTexture
+// material.displacementMap = doorHeightTexture
+// material.metalnessMap = doorMetalnessTexture
+// material.roughnessMap = doorRoughnessTexture
+// material.displacementScale = 0.05
+// material.normalMap = doorNormalTexture
+// material.transparent = true
+// material.alphaMap = doorAlphaTexture
 
+// gui.add(material, 'metalness').min(0).max(1).step(0.0001)
+// gui.add(material, 'roughness').min(0).max(1).step(0.0001)
+// gui.add(material, 'aoMapIntensity').min(0).max(10).step(0.0001)
+// gui.add(material, 'displacementScale').min(0).max(1).step(0.0001)
+// gui.addColor(material, 'color')
+
+// Evironement Map
+const material = new THREE.MeshStandardMaterial()
 gui.add(material, 'metalness').min(0).max(1).step(0.0001)
 gui.add(material, 'roughness').min(0).max(1).step(0.0001)
-gui.add(material, 'aoMapIntensity').min(0).max(10).step(0.0001)
-gui.add(material, 'displacementScale').min(0).max(1).step(0.0001)
+gui.addColor(material, 'color')
+material.envMap = envMapTexture
 
 // Objects
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,64,64), material)
