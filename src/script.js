@@ -13,9 +13,10 @@ const doorAmbientOcclusionTexture = textureLoader.load('/textures/door/ambientOc
 const doorMetalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
 const doorRoughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 // Gradient Textures
-const gradientTexture = textureLoader.load('/textures/gradients/3.jpg')
+const gradientTexture = textureLoader.load('/textures/gradients/5.jpg')
 gradientTexture.minFilter = THREE.NearestFilter
 gradientTexture.magFilter = THREE.NearestFilter
+gradientTexture.generateMipmaps = false
 // Matcaps Textures
 const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
 
