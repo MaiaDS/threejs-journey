@@ -97,6 +97,8 @@ const scene = new THREE.Scene()
 
 // Evironement Map
 const material = new THREE.MeshStandardMaterial()
+material.roughness = 0.2
+material.metalness = 0.8
 gui.add(material, 'metalness').min(0).max(1).step(0.0001)
 gui.add(material, 'roughness').min(0).max(1).step(0.0001)
 gui.addColor(material, 'color')
