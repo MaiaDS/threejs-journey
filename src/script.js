@@ -14,8 +14,8 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Axes helper
-const axesHelper = new THREE.AxesHelper()
-scene.add(axesHelper)
+// const axesHelper = new THREE.AxesHelper()
+// scene.add(axesHelper)
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
@@ -28,7 +28,7 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
         font, 
         size: 0.5, 
         height: 0.2, 
-        curveSegments: 5, 
+        curveSegments: 12, 
         bevelEnabled: true, 
         bevelThickness: 0.03, 
         bevelSize: 0.02,
@@ -42,8 +42,7 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
     //     -(textGeometry.boundingBox.max.z - 0.03) * 0.5
     // )
     textGeometry.center()
-    const textMaterial = new THREE.MeshMatcapMaterial()
-    textMaterial.matcap = matcapTexture
+    const textMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture})
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
 })
