@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { TorusGeometry } from 'three'
 
 // Debug
 const gui = new dat.GUI()
@@ -19,7 +20,7 @@ const scene = new THREE.Scene()
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
-const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
+const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
 
 // Fonts
 const fontLoader = new FontLoader()
@@ -42,10 +43,20 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
     //     -(textGeometry.boundingBox.max.z - 0.03) * 0.5
     // )
     textGeometry.center()
-    // const textMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture})
-    const textMaterial = new THREE.MeshNormalMaterial()
-    const text = new THREE.Mesh(textGeometry, textMaterial)
+    const material = new THREE.MeshMatcapMaterial({matcap: matcapTexture})
+    // const material = new THREE.MeshNormalMaterial()
+    const text = new THREE.Mesh(textGeometry, material)
     scene.add(text)
+    const torusGeometry = new TorusGeometry(0.3,0.2,20,45)
+    for(let i = 0 ; i < 100 ; i++) {
+        const torus = new THREE.Mesh(torusGeometry, material)
+        torus.position.set((Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10)
+        torus.rotation.x = Math.random() * Math.PI
+        torus.rotation.y = Math.random() * Math.PI
+        const scale  = Math.random()
+        torus.scale.set(scale, scale, scale)
+        scene.add(torus)
+    }
 })
 
 // Object
