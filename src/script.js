@@ -19,6 +19,7 @@ scene.add(axesHelper)
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
+const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
 
 // Fonts
 const fontLoader = new FontLoader()
@@ -41,7 +42,8 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
     //     -(textGeometry.boundingBox.max.z - 0.03) * 0.5
     // )
     textGeometry.center()
-    const textMaterial = new THREE.MeshBasicMaterial({wireframe:true})
+    const textMaterial = new THREE.MeshMatcapMaterial()
+    textMaterial.matcap = matcapTexture
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
 })
