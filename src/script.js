@@ -10,12 +10,12 @@ const gui = new dat.GUI()
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
+// Scene
+const scene = new THREE.Scene()
+
 // Axes helper
 const axesHelper = new THREE.AxesHelper()
 scene.add(axesHelper)
-
-// Scene
-const scene = new THREE.Scene()
 
 // Textures
 const textureLoader = new THREE.TextureLoader()
@@ -34,6 +34,7 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
         bevelOffset:0, 
         bevelSegments: 4
     })
+    textGeometry.computeBoundingBox()
     const textMaterial = new THREE.MeshBasicMaterial({wireframe:true})
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
