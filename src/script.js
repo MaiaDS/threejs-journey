@@ -42,7 +42,8 @@ fontLoader.load('/fonts/OverpassBlack.json', (font) => {
     //     -(textGeometry.boundingBox.max.z - 0.03) * 0.5
     // )
     textGeometry.center()
-    const textMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture})
+    // const textMaterial = new THREE.MeshMatcapMaterial({matcap: matcapTexture})
+    const textMaterial = new THREE.MeshNormalMaterial()
     const text = new THREE.Mesh(textGeometry, textMaterial)
     scene.add(text)
 })
