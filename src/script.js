@@ -25,20 +25,20 @@ const fontLoader = new FontLoader()
 fontLoader.load('/fonts/OverpassBlack.json', (font) => {
     const textGeometry = new TextGeometry('Maïa', { 
         font, 
-        size:0.5, 
-        height:0.2, 
-        curveSegments:5, 
+        size: 0.5, 
+        height: 0.2, 
+        curveSegments: 5, 
         bevelEnabled: true, 
-        bevelThickness:0.03, 
-        bevelSize:0.02,
-        bevelOffset:0, 
+        bevelThickness: 0.03, 
+        bevelSize: 0.02,
+        bevelOffset: 0, 
         bevelSegments: 4
     })
     textGeometry.computeBoundingBox()
     textGeometry.translate(
-        -textGeometry.boundingBox.max.x * 0.5, 
-        -textGeometry.boundingBox.max.y * 0.5, 
-        -textGeometry.boundingBox.max.z * 0.5
+        -(textGeometry.boundingBox.max.x - 0.02) * 0.5, 
+        -(textGeometry.boundingBox.max.y - 0.02) * 0.5, 
+        -(textGeometry.boundingBox.max.z - 0.03) * 0.5
     )
     const textMaterial = new THREE.MeshBasicMaterial({wireframe:true})
     const text = new THREE.Mesh(textGeometry, textMaterial)
