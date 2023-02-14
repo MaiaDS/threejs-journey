@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper'
 
 /**
  * Base
@@ -38,12 +39,12 @@ scene.add(pointLight)
 const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 2,3,1)
 rectAreaLight.position.set(-1.5,0,1.5)
 rectAreaLight.lookAt(new THREE.Vector3())
-// scene.add(rectAreaLight)
+scene.add(rectAreaLight)
 
 const spotLight = new THREE.SpotLight(0x78ff00, 0.5, 10, Math.PI * 0.2, 0.25, 1) // color, intensity, distance, angle, penumbra, decay
 spotLight.position.set(0,2,3)
 spotLight.target.position.x = -0.75
-// scene.add(spotLight,spotLight.target)
+scene.add(spotLight,spotLight.target)
 
 // Minimal cost lights: Ambient and Hemisphere
 // Moderate cost lights: Directional and Point
@@ -58,6 +59,16 @@ scene.add(directionalLightHelper)
 
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2)
 scene.add(pointLightHelper)
+
+const spotLightHelper = new THREE.SpotLightHelper(spotLight, 0.2)
+scene.add(spotLightHelper)
+
+window.requestAnimationFrame(() => {
+    spotLightHelper.update()
+})
+
+const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight, 0.2)
+scene.add(rectAreaLightHelper)
 
 /**
  * Objects
