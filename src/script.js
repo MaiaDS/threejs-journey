@@ -28,9 +28,12 @@ directionalLight.position.set(1,0.25,0)
 const hemisphereLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.3)
 // scene.add(hemisphereLight)
 
-const pointLight = new THREE.PointLight(0xff9000, 0.5)
+const pointLight = new THREE.PointLight(0xff9000, 0.5, 10, 2) // parameters: colors, intensity, distance, decay
 pointLight.position.set(1,-0.5,1)
+gui.add(pointLight, 'distance').step(0.1)
+gui.add(pointLight, 'decay').step(0.1)
 scene.add(pointLight)
+
 
 /**
  * Objects
