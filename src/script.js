@@ -17,9 +17,12 @@ const scene = new THREE.Scene()
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff,0.5) // parameters: colors, intensity
+const ambientLight = new THREE.AmbientLight(0xffffff,0.8) // parameters: colors, intensity
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.1)
 scene.add(ambientLight)
+
+const directionalLight = new THREE.DirectionalLight(0xe0e0e0, 0.3)
+scene.add(directionalLight)
 
 /**
  * Objects
