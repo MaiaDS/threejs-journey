@@ -26,7 +26,11 @@ directionalLight.position.set(1,0.25,0)
 // scene.add(directionalLight)
 
 const hemisphereLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.3)
-scene.add(hemisphereLight)
+// scene.add(hemisphereLight)
+
+const pointLight = new THREE.PointLight(0xff9000, 0.5)
+pointLight.position.set(1,-0.5,1)
+scene.add(pointLight)
 
 /**
  * Objects
