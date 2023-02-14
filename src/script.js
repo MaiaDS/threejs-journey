@@ -19,7 +19,7 @@ const scene = new THREE.Scene()
  */
 const ambientLight = new THREE.AmbientLight(0xffffff,0.8) // parameters: colors, intensity
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.1)
-scene.add(ambientLight)
+// scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xe0e0e0, 0.3)
 directionalLight.position.set(1,0.25,0)
@@ -32,8 +32,10 @@ const pointLight = new THREE.PointLight(0xff9000, 0.5, 10, 2) // parameters: col
 pointLight.position.set(1,-0.5,1)
 gui.add(pointLight, 'distance').step(0.1)
 gui.add(pointLight, 'decay').step(0.1)
-scene.add(pointLight)
+// scene.add(pointLight)
 
+const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 2,3,1)
+scene.add(rectAreaLight)
 
 /**
  * Objects
