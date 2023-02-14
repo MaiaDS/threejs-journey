@@ -19,7 +19,7 @@ const scene = new THREE.Scene()
  */
 const ambientLight = new THREE.AmbientLight(0xffffff,0.8) // parameters: colors, intensity
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.1)
-// scene.add(ambientLight)
+scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xe0e0e0, 0.3)
 directionalLight.position.set(1,0.25,0)
@@ -30,11 +30,14 @@ const hemisphereLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.3)
 
 const pointLight = new THREE.PointLight(0xff9000, 0.5, 10, 2) // parameters: colors, intensity, distance, decay
 pointLight.position.set(1,-0.5,1)
-gui.add(pointLight, 'distance').step(0.1)
-gui.add(pointLight, 'decay').step(0.1)
+// gui.add(pointLight, 'distance').step(0.1)
+// gui.add(pointLight, 'decay').step(0.1)
 // scene.add(pointLight)
 
+// only works with mesh standard material and mesh physical material
 const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 2,3,1)
+rectAreaLight.position.set(-1.5,0,1.5)
+rectAreaLight.lookAt(new THREE.Vector3())
 scene.add(rectAreaLight)
 
 /**
