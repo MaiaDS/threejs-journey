@@ -45,6 +45,11 @@ spotLight.position.set(0,2,3)
 spotLight.target.position.x = -0.75
 scene.add(spotLight,spotLight.target)
 
+// 
+// Minimal cost lights: Ambient and Hemisphere
+// Moderate cost lights: Directional and Point
+// Heavy cost lights: Spot and Rect area
+
 /**
  * Objects
  */
