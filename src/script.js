@@ -61,12 +61,11 @@ spotLight.shadow.camera.far = 6
 const pointLight = new THREE.PointLight(0xffffff, 0.3)
 pointLight.castShadow = true
 pointLight.position.set(-1,1,0)
-scene.add(pointLight)
 pointLight.shadow.mapSize.width = 1024
 pointLight.shadow.mapSize.height = 1024
-pointLight.shadow.mapSize.fov = 30
-pointLight.shadow.camera.near = 1
-pointLight.shadow.camera.far = 6
+directionalLight.shadow.camera.near = 0.1
+directionalLight.shadow.camera.far = 5
+scene.add(pointLight)
 // const spotLightCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera)
 // scene.add(spotLightCameraHelper)
 
