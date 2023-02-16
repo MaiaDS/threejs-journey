@@ -33,39 +33,39 @@ scene.add(directionalLight)
 
 // Shadows
 // Only point, directionnal and spot lights supports shadows
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.width = 1024
-directionalLight.shadow.mapSize.height = 1024
-directionalLight.shadow.camera.near = 1
-directionalLight.shadow.camera.far = 6
-directionalLight.shadow.camera.top = 2
-directionalLight.shadow.camera.right = 2
-directionalLight.shadow.camera.bottom = -2
-directionalLight.shadow.camera.left = -2
-directionalLight.shadow.radius = 10 // doesn't work with PCFSoftShadowMap
+// directionalLight.castShadow = true
+// directionalLight.shadow.mapSize.width = 1024
+// directionalLight.shadow.mapSize.height = 1024
+// directionalLight.shadow.camera.near = 1
+// directionalLight.shadow.camera.far = 6
+// directionalLight.shadow.camera.top = 2
+// directionalLight.shadow.camera.right = 2
+// directionalLight.shadow.camera.bottom = -2
+// directionalLight.shadow.camera.left = -2
+// directionalLight.shadow.radius = 10 // doesn't work with PCFSoftShadowMap
 // const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
 // scene.add(directionalLightCameraHelper)
 
-const spotLight = new THREE.SpotLight(0xffffff, 0.4, 10, Math.PI * 0.3)
-spotLight.castShadow = true
-spotLight.position.set(0,2,2)
-scene.add(spotLight, spotLight.target)
-spotLight.shadow.mapSize.width = 1024
-spotLight.shadow.mapSize.height = 1024
-spotLight.shadow.mapSize.fov = 30
-spotLight.shadow.camera.near = 1
-spotLight.shadow.camera.far = 6
+// const spotLight = new THREE.SpotLight(0xffffff, 0.4, 10, Math.PI * 0.3)
+// spotLight.castShadow = true
+// spotLight.position.set(0,2,2)
+// scene.add(spotLight, spotLight.target)
+// spotLight.shadow.mapSize.width = 1024
+// spotLight.shadow.mapSize.height = 1024
+// spotLight.shadow.mapSize.fov = 30
+// spotLight.shadow.camera.near = 1
+// spotLight.shadow.camera.far = 6
 // const spotLightCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera)
 // scene.add(spotLightCameraHelper)
 
-const pointLight = new THREE.PointLight(0xffffff, 0.3)
-pointLight.castShadow = true
-pointLight.position.set(-1,1,0)
-pointLight.shadow.mapSize.width = 1024
-pointLight.shadow.mapSize.height = 1024
-directionalLight.shadow.camera.near = 0.1
-directionalLight.shadow.camera.far = 5
-scene.add(pointLight)
+// const pointLight = new THREE.PointLight(0xffffff, 0.3)
+// pointLight.castShadow = true
+// pointLight.position.set(-1,1,0)
+// pointLight.shadow.mapSize.width = 1024
+// pointLight.shadow.mapSize.height = 1024
+// directionalLight.shadow.camera.near = 0.1
+// directionalLight.shadow.camera.far = 5
+// scene.add(pointLight)
 // const spotLightCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera)
 // scene.add(spotLightCameraHelper)
 
@@ -142,7 +142,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.shadowMap.enabled = true
+renderer.shadowMap.enabled = false
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 /**
