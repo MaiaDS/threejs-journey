@@ -44,7 +44,7 @@ directionalLight.shadow.camera.right = 2
 directionalLight.shadow.camera.bottom = -2
 directionalLight.shadow.camera.left = -2
 
-directionalLight.shadow.radius = 10
+directionalLight.shadow.radius = 10 // doesn't work with PCFSoftShadowMap
 
 // const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
 // scene.add(directionalLightCameraHelper)
