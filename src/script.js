@@ -20,8 +20,19 @@ const parameters = {
 }
 
 const generateGalaxy = () => {
-    console.log('generate galaxy')
+    // Geometry
+    const geometry = new THREE.BufferGeometry()
+    const positions = new Float32Array(parameters.count * 3)
+    for(let i = 0; i < parameters.count; i++){
+        const i3 = i * 3
+        positions[i3] = Math.random()
+        positions[i3 + 1] = Math.random()
+        positions[i3 + 2] = Math.random()
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
 }
+
+generateGalaxy()
 
 /**
  * Test cube
