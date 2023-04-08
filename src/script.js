@@ -14,6 +14,15 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+// Galaxy
+const parameters = {
+    count: 1000
+}
+
+const generateGalaxy = () => {
+    console.log('generate galaxy')
+}
+
 /**
  * Test cube
  */
