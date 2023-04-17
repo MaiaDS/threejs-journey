@@ -114,6 +114,7 @@ const tick = () =>
     // Animate Meshes
     for(const mesh of sectionMeshes){
         mesh.rotation.x = elapsedTime * 0.1
+        mesh.rotation.y = elapsedTime * 0.12
     }
 
     // Render
