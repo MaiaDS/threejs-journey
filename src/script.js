@@ -111,6 +111,16 @@ window.addEventListener('scroll', () => {
     scrollY = window.scrollY
 })
 
+// Cursor 
+const cursor = {
+    x: 0,
+    y: 0
+}
+window.addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = event.clientY / sizes.height - 0.5
+})
+
 /**
  * Animate
  */
@@ -128,6 +138,11 @@ const tick = () =>
 
     // Update the camera
     camera.position.y = - scrollY / sizes.height * objectsDistance
+
+    const paralaxX = cursor.x
+    const paralaxY = cursor.y
+    camera.position.x = paralaxX
+    camera.position.y = paralaxY
 
     // Render
     renderer.render(scene, camera)
