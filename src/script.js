@@ -31,7 +31,14 @@ const scene = new THREE.Scene()
 //     new THREE.MeshBasicMaterial({ color: '#ff0000' })
 // )
 // scene.add(cube)
-const material = new THREE.MeshToonMaterial({color: parameters.materialColor})
+
+const textureLoader = new THREE.TextureLoader
+const gradientTexture = textureLoader.load('textures/gradients/3.jpg')
+
+const material = new THREE.MeshToonMaterial({
+    color: parameters.materialColor,
+    gradientMap: gradientTexture
+})
 
 const mesh1 = new THREE.Mesh(new THREE.TorusGeometry(1,0.4,16,60), material)
 const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1,2,32), material)
