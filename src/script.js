@@ -91,9 +91,11 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
+const cameraGroup = new THREE.Group()
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
 camera.position.z = 6
-scene.add(camera)
+cameraGroup.add(camera)
+scene.add(cameraGroup)
 
 /**
  * Renderer
@@ -141,8 +143,8 @@ const tick = () =>
 
     const paralaxX = cursor.x
     const paralaxY = - cursor.y
-    camera.position.x = paralaxX
-    camera.position.y = paralaxY
+    cameraGroup.position.x = paralaxX
+    cameraGroup.position.y = paralaxY
 
     // Render
     renderer.render(scene, camera)
