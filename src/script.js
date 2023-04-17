@@ -144,8 +144,8 @@ const tick = () =>
     // Update the camera
     camera.position.y = - scrollY / sizes.height * objectsDistance
 
-    const paralaxX = cursor.x
-    const paralaxY = - cursor.y
+    const paralaxX = cursor.x * 0.5
+    const paralaxY = - cursor.y * 0.5
     cameraGroup.position.x += (paralaxX - cameraGroup.position.x) * 5 * deltaTime
     cameraGroup.position.y += (paralaxY - cameraGroup.position.y) * 5 * deltaTime
 
