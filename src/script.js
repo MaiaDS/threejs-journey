@@ -140,7 +140,7 @@ const tick = () =>
     camera.position.y = - scrollY / sizes.height * objectsDistance
 
     const paralaxX = cursor.x
-    const paralaxY = cursor.y
+    const paralaxY = - cursor.y
     camera.position.x = paralaxX
     camera.position.y = paralaxY
 
