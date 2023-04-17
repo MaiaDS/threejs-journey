@@ -11,8 +11,13 @@ const parameters = {
     lightColor: '#ffffff'
 }
 
-gui.addColor(parameters, 'materialColor').onChange(()=>{material.color.set(parameters.materialColor)})
-gui.addColor(parameters, 'lightColor').onChange(()=>{directionalLight.color.set(parameters.lightColor)})
+gui.addColor(parameters, 'materialColor').onChange(() => {
+    material.color.set(parameters.materialColor)
+    particlesMaterial.color.set(parameters.materialColor)
+})
+gui.addColor(parameters, 'lightColor').onChange(() => {
+    directionalLight.color.set(parameters.lightColor)
+})
 
 /**
  * Base
