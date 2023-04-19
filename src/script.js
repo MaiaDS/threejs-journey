@@ -40,10 +40,18 @@ world.gravity.set(0, - 9.82, 0)
 const sphereShape = new CANNON.Sphere(0.5)
 const sphereBody = new CANNON.Body({
     mass: 1,
-    position: new CANNON.Vect3(0,3,0),
+    position: new CANNON.Vec3(0,3,0),
     shape: sphereShape
 })
 world.addBody(sphereBody)
+
+const floorShape = new CANNON.Plane()
+const floorBody = new CANNON.Body({
+    mass: 0,
+    shape: floorShape
+})
+floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1,0,0), Math.PI * 0.5)
+world.addBody(floorBody)
 
 /**
  * Test sphere
@@ -155,6 +163,7 @@ const tick = () =>
 
     // Update physics
     world.step(1/60, deltaTime, 3)
+    sphere.position.copy(sphereBody.position)
 
     // Update controls
     controls.update()
