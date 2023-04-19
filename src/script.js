@@ -53,7 +53,7 @@ const defaultContactMaterial = new CANNON.ContactMaterial(
     defaultMaterial,
     { friction: 0.1, restitution: 0.7 }
 )
-world.addContactMaterial(defaultContactMaterial)
+world.defaultContactMaterial = defaultContactMaterial
 
 const sphereShape = new CANNON.Sphere(0.5)
 const sphereBody = new CANNON.Body({
