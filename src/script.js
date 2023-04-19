@@ -103,6 +103,19 @@ floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1,0,0), Math.PI * 0.5)
 world.addBody(floorBody)
 
 /**
+ * Sounds
+ */
+const hitSound = new Audio('/sounds/hit.mp3')
+const playHitSound = (collision) => {
+    const impactStrength = collision.contact.getImpactVelocityAlongNormal()
+    if(impactStrength > 1.5) {
+        hitSound.volume = Math.random()
+        hitSound.currentTime = 0
+        hitSound.play()
+    }
+}
+
+/**
 * Utils
 */
 const objectsToUpdate = []
@@ -134,6 +147,8 @@ const createSphere = (radius, position) => {
 
     // Save in objectsToUpdate
     objectsToUpdate.push({mesh,body})
+
+    body.addEventListener('collide', playHitSound)
 }
 // createSphere(0.5, {x:0,y:3,z:0})
 
@@ -162,8 +177,12 @@ const createBox = (width, height, depth, position) => {
     body.position.copy(position)
     world.addBody(body)
     objectsToUpdate.push({mesh,body})
+
+    body.addEventListener('collide', playHitSound)
 }
 createBox(1, 1.5, 2, { x: 0, y: 3, z: 0 })
+
+
 
 /**
  * Test sphere
