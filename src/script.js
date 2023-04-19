@@ -60,7 +60,7 @@ const sphereBody = new CANNON.Body({
     mass: 1,
     position: new CANNON.Vec3(0,3,0),
     shape: sphereShape,
-    material: defaultMaterial
+    // material: defaultMaterial
 })
 world.addBody(sphereBody)
 
@@ -68,7 +68,7 @@ const floorShape = new CANNON.Plane()
 const floorBody = new CANNON.Body({
     mass: 0,
     shape: floorShape,
-    material: defaultMaterial
+    // material: defaultMaterial
 })
 floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1,0,0), Math.PI * 0.5)
 world.addBody(floorBody)
