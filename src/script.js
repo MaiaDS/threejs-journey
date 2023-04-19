@@ -183,6 +183,7 @@ const tick = () =>
     oldElapsedTime = elapsedTime
 
     // Update physics
+    sphereBody.applyForce(new CANNON.Vec3(-0.5,0,0), sphereBody.position)
     world.step(1/60, deltaTime, 3)
     sphere.position.copy(sphereBody.position)
 
