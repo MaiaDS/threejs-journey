@@ -62,6 +62,7 @@ const environmentMapTexture = cubeTextureLoader.load([
  */
 const world = new CANNON.World()
 world.gravity.set(0, - 9.82, 0)
+world.broadphase = new CANNON.SAPBroadphase(world)
 
 const concreteMaterial = new CANNON.Material('concrete')
 const plasticMaterial = new CANNON.Material('plastic')
