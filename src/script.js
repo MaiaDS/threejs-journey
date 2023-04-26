@@ -105,6 +105,25 @@ window.addEventListener('mousemove', (event) => {
 
 let currentIntersect = null
 
+window.addEventListener('click', () => {
+    if(currentIntersect) {
+        // console.log('click')
+        switch(currentIntersect.object){
+            case object1:
+                console.log('object 1 has been clicked')
+                break
+            case object2:
+                console.log('object 2 has been clicked')
+                break
+            case object3:
+                console.log('object 8 has been clicked')
+                break
+            default:
+                console.log('click')
+        }
+    }
+})
+
 /**
  * Animate
  */
