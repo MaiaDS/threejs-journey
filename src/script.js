@@ -40,14 +40,14 @@ scene.add(object1, object2, object3)
  * Raycaster
  */
 const raycaster = new THREE.Raycaster()
-const rayOrigin = new THREE.Vector3(-3,0,0)
-const rayDirection = new THREE.Vector3(10,0,0).normalize()
-raycaster.set(rayOrigin, rayDirection)
+// const rayOrigin = new THREE.Vector3(-3,0,0)
+// const rayDirection = new THREE.Vector3(10,0,0).normalize()
+// raycaster.set(rayOrigin, rayDirection)
 
-const intersect = raycaster.intersectObject(object2)
-console.log(intersect)
-const intersects = raycaster.intersectObjects([object1,object2,object3])
-console.log(intersects)
+// const intersect = raycaster.intersectObject(object2)
+// console.log(intersect)
+// const intersects = raycaster.intersectObjects([object1,object2,object3])
+// console.log(intersects)
 
 /**
  * Sizes
@@ -101,6 +101,11 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    // Animate objects
+    object1.position.y = Math.sin(elapsedTime * 0.3) * 1.5
+    object2.position.y = Math.sin(elapsedTime * 0.8) * 1.5
+    object3.position.y = Math.sin(elapsedTime * 1.4) * 1.5
 
     // Update controls
     controls.update()
