@@ -103,6 +103,8 @@ window.addEventListener('mousemove', (event) => {
     // console.log(mouse)
 })
 
+let currentIntersect = null
+
 /**
  * Animate
  */
@@ -126,6 +128,18 @@ const tick = () =>
     const objects = [object1,object2,object3]
     const intersects = raycaster.intersectObjects(objects)
     // console.log(intersects)
+
+    if(intersects.length){
+        if(!currentIntersect){
+            console.log('mouse entered')
+        }
+        currentIntersect = intersects[0]
+    } else {
+        if(currentIntersect){
+            console.log('mouse leaved')
+        }
+        currentIntersect = null
+    }
 
     for(const object of objects){
         object.material.color.set('#ff0000')
