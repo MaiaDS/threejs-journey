@@ -19,12 +19,14 @@ const scene = new THREE.Scene()
  * Model
  */
 const gltfLoader = new GLTFLoader()
+let model = null
 gltfLoader.load(
     './models/Duck/glTF-Binary/Duck.glb',
     (gltf) => {
         // console.log('loaded')
-        gltf.scene.position.y = -1.2
-        scene.add(gltf.scene)
+        model = gltf.scene
+        model.position.y = -1.2
+        scene.add(model)
     }
 )
 
@@ -169,7 +171,11 @@ const tick = () =>
     const objects = [object1,object2,object3]
     const intersects = raycaster.intersectObjects(objects)
     // console.log(intersects)
-
+    if(model){
+        const modelIntersects = raycaster.intersectObject(model)
+        console.log(modelIntersects)
+    }
+    
     if(intersects.length){
         if(!currentIntersect){
             console.log('mouse entered')
