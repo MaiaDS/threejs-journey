@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 /**
  * Base
@@ -13,6 +14,27 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Model
+ */
+const gltfLoader = new GLTFLoader()
+gltfLoader.load(
+    './models/Duck/glTF-Binary/Duck.glb',
+    (gltf) => {
+        // console.log('loaded')
+        gltf.scene.position.y = -1.2
+        scene.add(gltf.scene)
+    }
+)
+
+/**
+ * Lights
+ */
+const ambientLight = new THREE.AmbientLight('#ffffff', 0.3)
+const directionalLight = new THREE.DirectionalLight('#ffffff', 0.7)
+directionalLight.position.set(1,2,3)
+scene.add(ambientLight, directionalLight)
 
 /**
  * Objects
