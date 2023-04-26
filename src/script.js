@@ -173,20 +173,17 @@ const tick = () =>
     // console.log(intersects)
     if(model){
         const modelIntersects = raycaster.intersectObject(model)
-        console.log(modelIntersects)
+        // console.log(modelIntersects)
+
+        modelIntersects.length ? model.scale.set(1.2,1.2,1.2) : model.scale.set(1,1,1)
     }
-    
-    if(intersects.length){
-        if(!currentIntersect){
-            console.log('mouse entered')
-        }
-        currentIntersect = intersects[0]
-    } else {
-        if(currentIntersect){
-            console.log('mouse leaved')
-        }
-        currentIntersect = null
+
+    if(intersects.length && !currentIntersect){
+        console.log('mouse entered')
+    } else if(!intersects.length && currentIntersect){
+        console.log('mouse leave')
     }
+    currentIntersect = intersects.length ? intersects[0] : null
 
     for(const object of objects){
         object.material.color.set('#ff0000')
