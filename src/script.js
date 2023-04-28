@@ -35,6 +35,8 @@ const updateAllMaterials = () => {
         if(child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial){
             child.material.envMap = environmentMap
             child.material.envMapIntensity = debugObject.envMapIntensity
+            child.castShadow = true
+            child.receiveShadow = true
         }
     })
 }
@@ -78,12 +80,18 @@ gltfLoader.load(
  */
 const directionalLight = new THREE.DirectionalLight('#ffffff',3)
 directionalLight.position.set(0.25,3,-2.25)
+directionalLight.castShadow = true
+directionalLight.shadow.camera.far = 15
+directionalLight.shadow.mapSize.set(1024,1024)
 scene.add(directionalLight)
 
 gui.add(directionalLight,'intensity').min(0).max(10).step(0.001).name('lightIntensity')
 gui.add(directionalLight.position,'x').min(-5).max(5).step(0.001).name('lightX')
 gui.add(directionalLight.position,'y').min(-5).max(5).step(0.001).name('lightY')
 gui.add(directionalLight.position,'z').min(-5).max(5).step(0.001).name('lightZ')
+
+// const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+// scene.add(directionalLightCameraHelper)
 
 /**
  * Test sphere
@@ -142,6 +150,8 @@ renderer.physicallyCorrectLights = true
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.toneMapping = THREE.ReinhardToneMapping
 renderer.toneMappingExposure = 3
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 gui.add(renderer,'toneMapping', {
     No: THREE.NoToneMapping,
