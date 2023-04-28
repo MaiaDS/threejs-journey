@@ -52,6 +52,7 @@ const environmentMap = cubeTextureLoader.load([
     '/textures/environmentMaps/0/nz.jpg'
 ])
 scene.background = environmentMap
+scene.environment = environmentMap // Apply the envMap as default
 
 /**
  * Models
