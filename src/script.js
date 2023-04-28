@@ -61,17 +61,17 @@ scene.environment = environmentMap // Apply the envMap as default
  * Models
  */
 gltfLoader.load(
-    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    '/models/hamburger.glb', // '/models/FlightHelmet/glTF/FlightHelmet.gltf' for the helmet
     (gltf) => {
         // console.log('success', gltf)
         const model = gltf.scene
-        model.scale.set(10,10,10)
-        model.position.set(0,-4,0)
-        model.rotation.y = Math.PI * 0.5
+        model.scale.set(0.3,0.3,0.3) // set(10,10,10) for the helmet
+        model.position.set(0,-1,0) // set(0,-4,0) for the helmet
+        // model.rotation.y = Math.PI * 0.5
         scene.add(model)
         updateAllMaterials()
 
-        gui.add(model.rotation, 'y').min(-Math.PI).max(Math.PI).step(0.001).name('rotation')
+        // gui.add(model.rotation, 'y').min(-Math.PI).max(Math.PI).step(0.001).name('rotation')
     }
 )
 
@@ -83,6 +83,7 @@ directionalLight.position.set(0.25,3,-2.25)
 directionalLight.castShadow = true
 directionalLight.shadow.camera.far = 15
 directionalLight.shadow.mapSize.set(1024,1024)
+directionalLight.shadow.normalBias = 0.05
 scene.add(directionalLight)
 
 gui.add(directionalLight,'intensity').min(0).max(10).step(0.001).name('lightIntensity')
