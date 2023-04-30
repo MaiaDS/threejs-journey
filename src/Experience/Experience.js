@@ -1,4 +1,5 @@
 import Sizes from './Utils/Sizes.js'
+import Time from './Utils/Time.js'
 
 export default class Experience {
     constructor(canvas) {
@@ -9,7 +10,13 @@ export default class Experience {
         this.sizes.on('resize', () => {
             this.resize()
         })
+        this.time = new Time()
+        this.time.on('tick', () => {
+            this.update()
+        })
     }
 
     resize() {}
+
+    update() {}
 }
