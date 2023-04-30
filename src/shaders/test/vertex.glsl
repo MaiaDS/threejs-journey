@@ -6,11 +6,14 @@ uniform float uTime;
 
 attribute vec3 position;
 attribute float aRandom;
+attribute vec2 uv;
 
 varying float vRandom;
+varying vec2 vUv;
 
 void main(){
     vRandom = aRandom;
+    vUv = uv;
     // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
     modelPosition.z += aRandom * sin(modelPosition.x * uWaveFrequency.x - uTime) * 0.1;
