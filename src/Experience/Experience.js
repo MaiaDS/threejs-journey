@@ -1,5 +1,6 @@
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
+import * as THREE from 'three'
 
 export default class Experience {
     constructor(canvas) {
@@ -14,6 +15,7 @@ export default class Experience {
         this.time.on('tick', () => {
             this.update()
         })
+        this.scene = new THREE.Scene()
     }
 
     resize() {}
