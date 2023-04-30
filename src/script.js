@@ -38,7 +38,14 @@ const material = new THREE.RawShaderMaterial({
     vertexShader: testVertexShader,
     fragmentShader: testFragmentShader,
     // transparent: true
+    uniforms: {
+        uWaveFrequency: { value: new THREE.Vector2(10,5) },
+        uTime: { value: 0 }
+    }
 })
+
+gui.add(material.uniforms.uWaveFrequency.value, 'x').min(0).max(20).step(0.01).name('waveFrequencyX')
+gui.add(material.uniforms.uWaveFrequency.value, 'y').min(0).max(20).step(0.01).name('waveFrequencyY')
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material)
@@ -96,6 +103,9 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    // Upadte Material
+    material.uniforms.uTime.value = elapsedTime
 
     // Update controls
     controls.update()
