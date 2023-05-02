@@ -83,6 +83,7 @@ void main() {
     // float strength = atan(vUv.x, vUv.y); // Pattern 40
     // float strength = atan(vUv.x - 0.5, vUv.y - 0.5); // Pattern 41
     // float strength = atan(vUv.x - 0.5, vUv.y - 0.5) / (PI * 2.0) + 0.5; // Pattern 42
-    float strength = mod((atan(vUv.x - 0.5, vUv.y - 0.5) / (PI * 2.0) + 0.5) * 20.0, 1.0); // Pattern 43
+    // float strength = mod((atan(vUv.x - 0.5, vUv.y - 0.5) / (PI * 2.0) + 0.5) * 20.0, 1.0); // Pattern 43
+    float strength = sin((atan(vUv.x - 0.5, vUv.y - 0.5) / (PI * 2.0) + 0.5) * 100.0); // Pattern 44
     gl_FragColor = vec4(vec3(strength), 1.0);
 }
