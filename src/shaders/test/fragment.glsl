@@ -65,6 +65,7 @@ void main() {
     * strength *= 0.15 / (distance(vec2(rotatedUv.y, (rotatedUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
     */
     // float strength = step(0.5, distance(vUv, vec2(0.5)) + 0.25); // Pattern 33
-    float strength = abs(distance(vUv, vec2(0.5)) - 0.25); // Pattern 34
+    // float strength = abs(distance(vUv, vec2(0.5)) - 0.25); // Pattern 34
+    float strength = step(0.02, abs(distance(vUv, vec2(0.5)) - 0.25)); // Pattern 35
     gl_FragColor = vec4(vec3(strength), 1.0);
 }
