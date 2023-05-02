@@ -28,22 +28,22 @@ void main() {
     // float strength = step(0.8,(mod(vUv.x * 10.0, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); // Pattern 12
     // float strength = step(0.4,(mod(vUv.x * 10.0, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); // Pattern 13
     /** Pattern 14
-    * float X = step(0.4,(mod(vUv.x * 10.0, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); 
-    * float Y = step(0.8,(mod(vUv.x * 10.0, 1.0))) * step(0.4, mod(vUv.y * 10.0, 1.0)); 
-    * float strength = X + Y; 
+        float X = step(0.4,(mod(vUv.x * 10.0, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); 
+        float Y = step(0.8,(mod(vUv.x * 10.0, 1.0))) * step(0.4, mod(vUv.y * 10.0, 1.0)); 
+        float strength = X + Y; 
     */
     /** Pattern 15
-    * float X = step(0.4,(mod(vUv.x * 10.0 - 0.2, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); 
-    * float Y = step(0.8,(mod(vUv.x * 10.0, 1.0))) * step(0.4, mod(vUv.y * 10.0 - 0.2, 1.0)); 
-    * float strength = X + Y; 
+        float X = step(0.4,(mod(vUv.x * 10.0 - 0.2, 1.0))) * step(0.8, mod(vUv.y * 10.0, 1.0)); 
+        float Y = step(0.8,(mod(vUv.x * 10.0, 1.0))) * step(0.4, mod(vUv.y * 10.0 - 0.2, 1.0)); 
+        float strength = X + Y; 
     */
     // float strength = abs(vUv.x - 0.5); // Pattern 16
     // float strength = min(abs(vUv.x - 0.5), abs(vUv.y - 0.5)); // Pattern 17
     // float strength = max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)); // Pattern 18
     // float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5))); // Pattern 19
     /** Pattern 20
-    * float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)))
-    * strength *= 1.0 - step(0.25, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)));
+        float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)))
+        strength *= 1.0 - step(0.25, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)));
     */
     // float strength = floor(vUv.x * 10.0) / 10.0; // Pattern 21
     // float strength = floor(vUv.x * 10.0) / 10.0 * floor(vUv.y * 10.0) / 10.0; // Pattern 22
@@ -56,20 +56,25 @@ void main() {
     // float strength = 0.015 / (distance(vUv, vec2(0.5))); // Pattern 29
     // float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); // Pattern 30
     /** Pattern 31
-    * float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); 
-    * strength *= 0.015 / (distance(vec2(vUv.y, (vUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
+        float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); 
+        strength *= 0.015 / (distance(vec2(vUv.y, (vUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
     */
     /** Pattern 32 
-    * vec2 rotatedUv = rotate(vUv, PI * 0.25, vec2(0.5));
-    * float strength = 0.15 / (distance(vec2(rotatedUv.x, (rotatedUv.y - 0.5) * 5.0 + 0.5), vec2(0.5)));
-    * strength *= 0.15 / (distance(vec2(rotatedUv.y, (rotatedUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
+        vec2 rotatedUv = rotate(vUv, PI * 0.25, vec2(0.5));
+        float strength = 0.15 / (distance(vec2(rotatedUv.x, (rotatedUv.y - 0.5) * 5.0 + 0.5), vec2(0.5)));
+        strength *= 0.15 / (distance(vec2(rotatedUv.y, (rotatedUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
     */
     // float strength = step(0.5, distance(vUv, vec2(0.5)) + 0.25); // Pattern 33
     // float strength = abs(distance(vUv, vec2(0.5)) - 0.25); // Pattern 34
     // float strength = step(0.02, abs(distance(vUv, vec2(0.5)) - 0.25)); // Pattern 35
     // float strength = 1.0 - step(0.02, abs(distance(vUv, vec2(0.5)) - 0.25)); // Pattern 36
-    // Pattern 37
-    vec2 wavedUv = vec2(vUv.x, vUv.y + sin(vUv * 30.0) * 0.1);
-    float strength = 1.0 - step(0.01, abs(distance(wavedUv, vec2(0.5)) - 0.25)); 
+    /** Pattern 37
+        vec2 wavedUv = vec2(vUv.x, vUv.y + sin(vUv * 30.0) * 0.1);
+        float strength = 1.0 - step(0.01, abs(distance(wavedUv, vec2(0.5)) - 0.25)); 
+    */
+    ///** Pattern 38
+        vec2 wavedUv = vec2(vUv.x + sin(vUv.y * 30.0) * 0.1, vUv.y + sin(vUv.x * 30.0) * 0.1);
+        float strength = 1.0 - step(0.01, abs(distance(wavedUv, vec2(0.5)) - 0.25)); 
+    //*/
     gl_FragColor = vec4(vec3(strength), 1.0);
 }
