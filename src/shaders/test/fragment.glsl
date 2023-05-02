@@ -32,7 +32,10 @@ void main() {
     // float strength = min(abs(vUv.x - 0.5), abs(vUv.y - 0.5)); // Pattern 17
     // float strength = max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)); // Pattern 18
     // float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5))); // Pattern 19
-    // float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5))) * (1.0 - step(0.25, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)))); // Pattern 20
+    /** Pattern 20
+    * float strength = step(0.2, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)))
+    * strength *= 1.0 - step(0.25, max(abs(vUv.x - 0.5), abs(vUv.y - 0.5)));
+    */
     // float strength = floor(vUv.x * 10.0) / 10.0; // Pattern 21
     // float strength = floor(vUv.x * 10.0) / 10.0 * floor(vUv.y * 10.0) / 10.0; // Pattern 22
     // float strength = random(vUv); // Pattern 23
@@ -42,6 +45,9 @@ void main() {
     // float strength = distance(vUv, vec2(0.5)); // Pattern 27
     // float strength = 1.0 - distance(vUv, vec2(0.5)); // Pattern 28
     // float strength = 0.015 / (distance(vUv, vec2(0.5))); // Pattern 29
-    float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); // Pattern 30
+    // float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); // Pattern 30
+    /** Pattern 31 */
+    float strength = 0.015 / (distance(vec2(vUv.x, (vUv.y - 0.5) * 5.0 + 0.5), vec2(0.5))); 
+    strength *= 0.015 / (distance(vec2(vUv.y, (vUv.x - 0.5) * 5.0 + 0.5), vec2(0.5)));
     gl_FragColor = vec4(vec3(strength), 1.0);
 }
