@@ -2,6 +2,7 @@ uniform float uSize;
 uniform float uTime;
 
 attribute float aScale;
+attribute vec3 aRandomness;
 
 varying vec3 vColor;
 
@@ -17,7 +18,9 @@ void main() {
     angle += angleOffset;
     modelPosition.x = cos(angle) * distanceToCenter;
     modelPosition.z = sin(angle) * distanceToCenter;
-
+    // Randomness
+    modelPosition.xyz += aRandomness;
+    
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
     gl_Position = projectedPosition;
