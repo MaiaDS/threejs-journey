@@ -71,6 +71,10 @@ const material = new THREE.MeshStandardMaterial( {
     normalMap: normalTexture
 })
 
+material.onBeforeCompile = (shader) => {
+    console.log(shader)
+}
+
 /**
  * Models
  */
