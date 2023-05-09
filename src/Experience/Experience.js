@@ -68,5 +68,7 @@ export default class Experience {
                 }
             }
         })
+
+        this.camera.controls.dispose()
     }
 }
