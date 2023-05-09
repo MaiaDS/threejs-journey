@@ -7,6 +7,7 @@ import Renderer from './Renderer.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import sources from './sources.js'
+import Debug from './Utils/Debug.js'
 
 let instance = null
 export default class Experience {
@@ -20,6 +21,7 @@ export default class Experience {
         }
         instance = this
 
+        this.debug = new Debug()
         this.canvas = canvas
         this.sizes = new Sizes()
         this.sizes.on('resize', () => {
