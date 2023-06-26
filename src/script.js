@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
+import { GroundProjectedSkybox } from 'three/addons/objects/GroundProjectedSkybox.js'
 
 /**
  * Loaders
@@ -55,25 +56,36 @@ const scene = new THREE.Scene()
 // HDR (RGBE) equirectangular
 // rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
 // rgbeLoader.load('/environmentMaps/blender-2k.hdr', (environmentMap) =>
-// {
-//     environmentMap.mapping = THREE.EquirectangularReflectionMapping
+rgbeLoader.load('/environmentMaps/2/2k.hdr', (environmentMap) =>
+{
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
-//     // scene.background = environmentMap
-//     scene.environment = environmentMap
-// })
+    // scene.background = environmentMap
+    scene.environment = environmentMap
+
+    const skybox = new GroundProjectedSkybox(environmentMap)
+    skybox.scale.setScalar(50)
+    skybox.radius = 120
+    skybox.height = 11
+    scene.add(skybox)
+
+
+    gui.add(skybox, 'radius', 1, 200, 0.1).name('skyboxRadius')
+    gui.add(skybox, 'height', 1, 100, 0.1).name('skyboxHeight')
+})
 
 // LDR equirectangular
-const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/anime_art_style_japan_streets_with_cherry_blossom_.jpg')
-environmentMap.mapping = THREE.EquirectangularReflectionMapping
-environmentMap.colorSpace = THREE.SRGBColorSpace
-scene.background = environmentMap
-scene.environment = environmentMap
+// const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/anime_art_style_japan_streets_with_cherry_blossom_.jpg')
+// environmentMap.mapping = THREE.EquirectangularReflectionMapping
+// environmentMap.colorSpace = THREE.SRGBColorSpace
+// scene.background = environmentMap
+// scene.environment = environmentMap
 
 /**
  * Environment map
  */
 // Global intensity
-global.envMapIntensity = 4
+global.envMapIntensity = 1
 gui.add(global, 'envMapIntensity').min(0).max(10).step(0.001).onChange(updateAllMaterials)
 // LDR cube texture
 // const environmentMap = cubeTextureLoader.load([
