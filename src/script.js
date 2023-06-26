@@ -10,6 +10,7 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 const gltfLoader = new GLTFLoader()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 const rgbeLoader = new RGBELoader()
+const textureLoader = new THREE.TextureLoader()
 
 /**
  * Update all materials
@@ -53,19 +54,26 @@ const scene = new THREE.Scene()
 
 // HDR (RGBE) equirectangular
 // rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
-rgbeLoader.load('/environmentMaps/blender-2k.hdr', (environmentMap) =>
-{
-    environmentMap.mapping = THREE.EquirectangularReflectionMapping
+// rgbeLoader.load('/environmentMaps/blender-2k.hdr', (environmentMap) =>
+// {
+//     environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
-    // scene.background = environmentMap
-    scene.environment = environmentMap
-})
+//     // scene.background = environmentMap
+//     scene.environment = environmentMap
+// })
+
+// LDR equirectangular
+const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/anime_art_style_japan_streets_with_cherry_blossom_.jpg')
+environmentMap.mapping = THREE.EquirectangularReflectionMapping
+environmentMap.colorSpace = THREE.SRGBColorSpace
+scene.background = environmentMap
+scene.environment = environmentMap
 
 /**
  * Environment map
  */
 // Global intensity
-global.envMapIntensity = 1
+global.envMapIntensity = 4
 gui.add(global, 'envMapIntensity').min(0).max(10).step(0.001).onChange(updateAllMaterials)
 // LDR cube texture
 // const environmentMap = cubeTextureLoader.load([
