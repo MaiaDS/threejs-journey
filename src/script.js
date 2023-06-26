@@ -52,7 +52,8 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // HDR (RGBE) equirectangular
-rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
+// rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
+rgbeLoader.load('/environmentMaps/blender-2k.hdr', (environmentMap) =>
 {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
